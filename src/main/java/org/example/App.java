@@ -8,6 +8,15 @@ public class App
     }
 
     public static String getPackage(String _import) {
-        throw new RuntimeException("Not implemented");
+        if (!_import.contains(".")) return _import;
+
+        String[] split;
+        String result = _import;
+        do {
+            result = result.substring(0, result.lastIndexOf("."));
+            split = result.split("\\.");
+        } while (Character.isUpperCase(split[split.length - 1].charAt(0)));
+
+        return result;
     }
 }
